@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="egovframework.example.sys.data.mapper.DataInfoMapper">
+
+	<select id="selectTest" resultType="string">
+	SELCET 'DDDDDDDDDDDD' from dual
+	</select>
+	
+	
+	<insert id="insertDataInfo" parameterType="egovframework.example.sys.data.vo.DataInfoVO" >
+		<selectKey keyProperty="sysId" resultType="string" order="BEFORE">
+			SELECT 'ID-'||TO_CHAR(COUNT(*)+1) from tb_datainfo
+		</selectKey>
+	INSERT INTO tb_datainfo (
+	    sys_id
+	    ,sys_name
+	    ,sys_info
+	    ,sys_ver
+	    ,use_yn
+	    ,pow
+	    ,create_dt
+	    ,update_dt
+	) VALUES (
+	     #{sysId}
+	    ,#{sysName}
+	    ,#{sysInfo}
+	    ,#{sysVer}
+	    ,#{useYn}
+	    ,#{pow}
+	    ,CURRENT_DATE
+	    ,CURRENT_DATE
+	)
+	</insert>
+	
+	
+</mapper>
